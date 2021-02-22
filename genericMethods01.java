@@ -1,15 +1,16 @@
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.print.PrintService;
-
 public class genericMethods01 {
 
-    public static Character[] charArray = { "a", "e", "i", "o", "u" };
-    public static int[] intArray = { 1, 2, 3, 4, 5 };
+    public static Character[] charArray = { 'a', 'e', 'i', 'o', 'u' };
+    public static Integer[] intArray = { 1, 2, 3, 4, 5 };
     public static Boolean[] boolArray = { true, false, true, false };
 
-    public static<T> List<T> listToArray(T[] array, List<T> list) {
+    // T will be a local type and will depend on the parameter passed
+    public static <T> List<T> listToArray(T[] array) {
+
+        List<T> list = new ArrayList<T>();
 
         for (T objectEach : array) {
             list.add(objectEach);
@@ -19,9 +20,11 @@ public class genericMethods01 {
 
     public static void main(String[] args) {
 
-        List<Character> charList = listToArray(charArray, new ArrayList<>());
+        List<Character> charList = listToArray(charArray);
+        List<Integer> intList = listToArray(intArray);
 
-        // System.out.println(charList);
+        System.out.println(charList);
+        System.out.println(intList);
 
     }
 }
